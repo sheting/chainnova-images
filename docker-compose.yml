@@ -1,0 +1,53 @@
+version: '3.7'
+
+services:
+  # vue cli3
+  vue-cli-3:
+    image: ${DOCKER_REPO}vue-cli-3
+    env_file: .env
+    build:
+      context: .
+      target: vue-cli-3
+      args:
+        DOCKER_REPO: $DOCKER_REPO
+
+  # vue cli3 development
+  vue-cli-3-dev:
+    image: ${DOCKER_REPO}vue-cli-3-dev
+    env_file: .env
+    build:
+      context: .
+      target: vue-cli-3-dev
+      args:
+        DOCKER_REPO: $DOCKER_REPO
+  
+  # vue cli3 build
+  static-service:
+    image: ${DOCKER_REPO}static-service
+    env_file: .env
+    build:
+      context: .
+      target: static-service
+      args:
+        DOCKER_REPO: $DOCKER_REPO
+    restart: always
+
+  # ionic cli3
+  ionic-cli-3:
+    image: ${DOCKER_REPO}ionic-cli-3
+    env_file: .env
+    build:
+      context: .
+      target: ionic-cli-3
+      args:
+        DOCKER_REPO: $DOCKER_REPO
+  
+  # ionic cli3 development
+  ionic-cli-3-dev:
+    image: ${DOCKER_REPO}ionic-cli-3-dev
+    env_file: .env
+    build:
+      context: .
+      target: ionic-cli-3-dev
+      args:
+        DOCKER_REPO: $DOCKER_REPO
